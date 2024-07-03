@@ -4,15 +4,20 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 const ProductItem = ({ product, onAddToCart }) => {
   return (
     <View style={styles.container}>
-      <Image source={product.image} style={styles.image} />
+      <View style={styles.imageContainer}>
+        <Image source={product.image} style={styles.image} />
+        <TouchableOpacity
+          style={styles.addButton}
+          onPress={() => onAddToCart(product)}
+        >
+          <Image
+            source={require("../assets/add_circle.png")} // Replace with your actual icon
+            style={styles.addButtonImage}
+          />
+        </TouchableOpacity>
+      </View>
       <Text style={styles.name}>{product.name}</Text>
       <Text style={styles.price}>${product.price}</Text>
-      <TouchableOpacity
-        style={styles.addButton}
-        onPress={() => onAddToCart(product)}
-      >
-        <Text style={styles.addButtonText}>Add to Cart</Text>
-      </TouchableOpacity>
     </View>
   );
 };
@@ -26,11 +31,14 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignItems: "center",
   },
-  image: {
-    width: 150,
-    height: 150,
-    resizeMode: "cover",
+  imageContainer: {
+    position: "relative",
     marginBottom: 8,
+  },
+  image: {
+    width: 190,
+    height: 240,
+    resizeMode: "cover",
   },
   name: {
     fontSize: 16,
@@ -40,17 +48,20 @@ const styles = StyleSheet.create({
   price: {
     fontSize: 14,
     color: "#888",
-    marginBottom: 8,
   },
   addButton: {
-    backgroundColor: "#000",
-    padding: 8,
-    borderRadius: 4,
+    position: "absolute",
+    bottom: 10,
+    right: 10,
+
+    borderRadius: 15,
+    padding: 5,
   },
-  addButtonText: {
-    color: "#fff",
-    fontWeight: "bold",
+  addButtonImage: {
+    width: 20,
+    height: 20,
   },
+  //help
 });
 
 export default ProductItem;

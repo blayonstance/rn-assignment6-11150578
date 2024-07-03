@@ -20,6 +20,10 @@ const CartScreen = () => {
     const updatedCart = cartItems.filter((item) => item.id !== productId);
     setCartItems(updatedCart);
     await AsyncStorage.setItem("cart", JSON.stringify(updatedCart));
+
+    if (navigation.setParams) {
+      navigation.setParams({ cartUpdated: Date.now() });
+    }
   };
 
   return (

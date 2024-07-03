@@ -13,7 +13,10 @@ const CartItem = ({ product, onRemoveFromCart }) => {
         style={styles.removeButton}
         onPress={() => onRemoveFromCart(product.id)}
       >
-        <Text style={styles.removeButtonText}>Remove</Text>
+        <Image
+          source={require("../assets/remove.png")} // Replace with your actual x icon image path
+          style={styles.removeIcon}
+        />
       </TouchableOpacity>
     </View>
   );
@@ -46,13 +49,11 @@ const styles = StyleSheet.create({
     color: "#888",
   },
   removeButton: {
-    backgroundColor: "#ff0000",
     padding: 8,
-    borderRadius: 4,
   },
-  removeButtonText: {
-    color: "#fff",
-    fontWeight: "bold",
+  removeIcon: {
+    width: 20,
+    height: 20,
   },
 });
 

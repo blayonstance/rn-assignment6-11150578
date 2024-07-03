@@ -61,11 +61,18 @@ const PRODUCTS = [
     price: 120,
     image: require("../assets/dress7.png"),
   },
+  {
+    id: "8",
+    description: "",
+    name: "Slut  Wear",
+    price: 120,
+    image: require("../assets/dress3.png"),
+  },
 ];
 
 const HomeScreen = ({ navigation }) => {
   const [cartItems, setCartItems] = useState([]);
-
+  0;
   useEffect(() => {
     const loadCart = async () => {
       const storedCart = await AsyncStorage.getItem("cart");
@@ -110,7 +117,7 @@ const HomeScreen = ({ navigation }) => {
         <View style={styles.iconContainer}>
           <View style={styles.line} />
           <View style={styles.iconCircle}>
-            <Ionicons name="book" size={30} />
+            <Image source={require("../assets/Listview.png")} />
           </View>
           <View style={styles.iconCircle}>
             <Ionicons name="filter" size={30} />
@@ -170,6 +177,8 @@ const styles = StyleSheet.create({
   },
 
   iconCircle: {
+    alignItems: "center",
+    justifyContent: "center",
     width: 40,
     height: 40,
     borderRadius: 50,
